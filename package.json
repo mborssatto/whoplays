@@ -1,0 +1,25 @@
+{
+  "name": "whoplays",
+  "version": "1.0.0",
+  "description": "Final project for Coyotiv Software Engineering Course",
+  "main": "index.js",
+  "scripts": {
+    "watch": "nodemon",
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mborssatto/whoplays.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mborssatto/whoplays/issues"
+  },
+  "homepage": "https://github.com/mborssatto/whoplays#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  }
+}
