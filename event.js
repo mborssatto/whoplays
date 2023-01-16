@@ -5,36 +5,12 @@ class Event {
 
     constructor(date, artists, city) {
         this.date = date
-        this.artists = [artists]
+        this.artists = artists
         this.city = city
     }
 }
 
-const eventOne = new Event({
-    name: 'Festival One',
-    artists: ['Maria Bethânia', 'Caetano Veloso'],
-    date: '2022-11-01',
-    venue: 'HKW',
-    city: 'Berlin',
-  })
-  const eventTwo = new Event({
-    name: 'Festival Two',
-    artists: ['Mulatu Astatke'],
-    date: '2022-12-01',
-    venue: 'HKW',
-    city: 'Berlin',
-  })
-  const eventThree = new Event({
-    name: 'Festival Three',
-    artists: ['Gal Costa'],
-    date: '2023-10-01',
-    venue: 'Teatro Central',
-    city: 'São Paulo',
-  })
-
-console.log(eventOne)
-console.log(eventTwo)
-console.log(eventThree)
+module.exports = Event;
 
 
 /*  Class with mongo schema
