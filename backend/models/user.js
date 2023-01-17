@@ -1,4 +1,4 @@
-const event = require('./event')
+const Event = require('./event')
 
 class User {
     id
