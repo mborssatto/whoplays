@@ -1,20 +1,24 @@
-class Event {
-    venue = ''
-    name = ''
-    favoritedBy = []
-
-    constructor(date, artists, city) {
-        this.date = date
-        this.artists = artists
-        this.city = city
-    }
-}
-
-module.exports = Event;
+const mongoose = require('mongoose')
+const autopopulate = require('mongoose-autopopulate')
 
 
-/*  Class with mongo schema
+// class Event {
+//     venue = ''
+//     name = ''
+//     favoritedBy = []
+
+//     constructor(date, artists, city) {
+//         this.date = date
+//         this.artists = artists
+//         this.city = city
+//     }
+// }
+
+
+//   Class with mongo schema
 const eventSchema = new mongoose.Schema({
+  venue: String,
+  name: String,
   date: Date,
   artists: [String],
   city: String,
@@ -25,8 +29,6 @@ const eventSchema = new mongoose.Schema({
       autopopulate: true,
     },
   ],
-  name: String,
-  venue: String,
 })
 
 class Event {
@@ -45,4 +47,4 @@ Favorited by: ${this.favoritedBy}
   }
 }
 
-*/
+module.exports = Event;
