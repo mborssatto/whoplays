@@ -1,21 +1,6 @@
 const mongoose = require('mongoose')
 const autopopulate = require('mongoose-autopopulate')
 
-
-// class Event {
-//     venue = ''
-//     name = ''
-//     favoritedBy = []
-
-//     constructor(date, artists, city) {
-//         this.date = date
-//         this.artists = artists
-//         this.city = city
-//     }
-// }
-
-
-//   Class with mongo schema
 const eventSchema = new mongoose.Schema({
   venue: String,
   name: String,
