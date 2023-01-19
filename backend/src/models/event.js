@@ -1,26 +1,21 @@
 const mongoose = require('mongoose')
 const autopopulate = require('mongoose-autopopulate')
+const User = require('../models/user')
 
 const eventSchema = new mongoose.Schema({
   venue: String,
   name: String,
   date: Date,
-  artists: [String],
+  artist: [String],
   city: String,
-  favoritedBy: [
-    {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: 'User',
-      autopopulate: true,
-    },
-  ],
+  favoritedBy: [],
 })
 
 class Event {
   get detail() {
     return `
 Event: ${this.name}
-Artists:\n${this.artists
+Artist:\n${this.artist
       .map(element => {
         return `- ${element}`
       })
@@ -32,4 +27,7 @@ Favorited by: ${this.favoritedBy}
   }
 }
 
-module.exports = Event;
+eventSchema.loadClass(Event) 
+eventSchema.plugin(autopopulate) 
+
+module.exports = mongoose.model('Event', eventSchema) 
