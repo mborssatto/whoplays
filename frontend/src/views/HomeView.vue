@@ -2,20 +2,25 @@
   <div class="home">
     <h1>Welcome to whoPlays</h1>
     <h2>Check out these events!</h2>
-    <ul>
-      <Event v-for="event in events" :event="event" :key="event._id" />
-    </ul>
+    <b-container fluid>
+      <b-row align-v="center">
+        <b-col md="3">
+          <event-card 
+            v-for="event in events" :event="event" :key="event._id" /></event-card>
+        </b-col>
+      </b-row>
+    </b-container>
   </div>
 </template>
 
 <script>
 import axios from 'axios'
-import Event from "@/components/event.vue";
+import EventCard from "@/components/eventCard.vue";
 
 export default {
   name: "Home",
   components: {
-    Event,
+    'event-card' : EventCard,
   },
   data() {
     return {
@@ -25,7 +30,6 @@ export default {
   async created() {
     const eventsRequest = await axios.get('/events')
     this.events = eventsRequest.data
-    
   }
 };
 </script>
