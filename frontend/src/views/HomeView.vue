@@ -1,18 +1,31 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js App" />
+    <h1>Welcome to whoPlays</h1>
+    <h2>Check out these events!</h2>
+    <ul>
+      <Event v-for="event in events" :event="event" :key="event._id" />
+    </ul>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from "@/components/HelloWorld.vue";
+import axios from 'axios'
+import Event from "@/components/event.vue";
 
 export default {
-  name: "HomeView",
+  name: "Home",
   components: {
-    HelloWorld,
+    Event,
   },
+  data() {
+    return {
+      events: []
+    }
+  },
+  async created() {
+    const eventsRequest = await axios.get('/events')
+    this.events = eventsRequest.data
+    
+  }
 };
 </script>
