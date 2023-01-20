@@ -3,6 +3,10 @@ const Event = require('../models/event')
 
 const router = express.Router()
 
+router.get('/', async (req, res, next) => {
+  res.send(await Event.find())
+})
+
 router.get('/initialize', async (req, res) => {
   const eventOne = await Event.create({
     name: 'Festival One',
