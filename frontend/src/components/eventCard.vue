@@ -8,8 +8,8 @@
     class="mb-2"
   >
   <b-card-text>
-    <h5>{{ event.artist }}</h5>
-    <p>{{ event.date }}</p>
+    <h5>{{ event.artist.join(", ") }}</h5>
+    <p>{{ new Intl.DateTimeFormat('de-DE').format(new Date(event.date)) }}</p>
     <p>{{ event.city }}</p>
     <p>{{ event.venue }}</p>
   </b-card-text>
@@ -29,5 +29,13 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
+.card-body {
+  justify-content: space-between;
+  display: flex;
+  flex-direction: column;
+}
 
+.btn {
+  align-self: center
+}
 </style>
