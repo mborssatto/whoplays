@@ -3,10 +3,10 @@
     <h1>Welcome to whoPlays</h1>
     <h2>Check out these events!</h2>
     <b-container fluid>
-      <b-row align-v="center">
-        <b-col md="3">
-          <event-card 
-            v-for="event in events" :event="event" :key="event._id" /></event-card>
+      <b-row align-v="stretch">
+        <b-col md="3" v-for="event in events" class="card-row">
+          <event-card
+           :event="event" :key="event._id" /></event-card>
         </b-col>
       </b-row>
     </b-container>
@@ -33,3 +33,10 @@ export default {
   }
 };
 </script>
+
+<style>
+.card-row {
+  display: flex;
+  align-items: stretch
+}
+</style>
