@@ -2,9 +2,9 @@
   <div class="home">
     <h1>Welcome to whoPlays</h1>
     <h2>Check out these events!</h2>
-    <b-container fluid>
+    <b-container>
       <b-row align-v="stretch">
-        <b-col md="3" v-for="event in events" class="card-row">
+        <b-col md="4" v-for="event in events" class="card-row">
           <event-card
            :event="event" :key="event._id" /></event-card>
         </b-col>
@@ -37,6 +37,7 @@ export default {
 <style>
 .card-row {
   display: flex;
-  align-items: stretch
+  align-items: stretch;
+  justify-content: center;
 }
 </style>
