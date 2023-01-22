@@ -16,9 +16,6 @@ require('./database-connection')
 
 var client_id = process.env.CLIENT_ID;
 var client_secret = process.env.CLIENT_SECRET;
-console.log("client_id")
-
-console.log(client_id)
 
 var authOptions = {
   url: 'https://accounts.spotify.com/api/token',
@@ -32,7 +29,6 @@ var authOptions = {
 };
 
 console.log("*****************this is running*****************")
-console.log(process.env) 
 
 request.post(authOptions, function(error, response, body) {
   if (!error && response.statusCode === 200) {

@@ -1,4 +1,4 @@
-version: '3'
+version: "3"
 services:
   frontend:
     image: frontend
@@ -22,6 +22,7 @@ services:
       - 35729:35729
     volumes:
       - ./backend/src:/app/src
+      - ./backend/.env:/app/.env
   mongo:
     image: mongo
     ports:
