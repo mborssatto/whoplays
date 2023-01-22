@@ -14,6 +14,7 @@ var eventsRouter = require('./routes/events');
 
 require('./database-connection')
 
+// Spotify API 
 var client_id = process.env.CLIENT_ID;
 var client_secret = process.env.CLIENT_SECRET;
 
@@ -28,32 +29,13 @@ var authOptions = {
   json: true
 };
 
-console.log("*****************this is running*****************")
-
+// get Spotify Access Token
 request.post(authOptions, function(error, response, body) {
   if (!error && response.statusCode === 200) {
     var token = body.access_token;
-    console.log("**********SUCCESS ACCESS TOKEN GRANTED*********");
-    console.log(body.access_token)
-  }
-    console.log("this is an error" + error)
-});
-
-request.post(authOptions, function (error, response, body) {  
-  if (!error && response.statusCode === 200) {
-
-    // use the access token to access the Spotify Web API
-    var token = body.access_token;
-    request.get(options, function (error, response, body) {
-      console.log(body);
-      console.log("**********SUCCESS ACCESS TOKEN GRANTED*********")
-    });
-  } if (error) {
-    return console.error("Error: " + error);
   }
 });
-console.log("*****************this is ALSO running*****************")
-
+//END of Spotify call
 
 var app = express();
 
