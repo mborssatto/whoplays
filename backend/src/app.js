@@ -1,3 +1,5 @@
+require('dotenv');
+require('dotenv').config({ debug: process.env.DEBUG });
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
@@ -9,7 +11,7 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var eventsRouter = require('./routes/events');
 
-require('./database-connection')
+require('./database-connection');
 
 var app = express();
 
