@@ -5,37 +5,13 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-var cors = require('cors');
-var request = require('request');
+var cors = require('cors')
  
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var eventsRouter = require('./routes/events');
 
 require('./database-connection');
-
-// Spotify API 
-var client_id = process.env.CLIENT_ID;
-var client_secret = process.env.CLIENT_SECRET;
-
-var authOptions = {
-  url: 'https://accounts.spotify.com/api/token',
-  headers: {
-    'Authorization': 'Basic ' + (Buffer.from(client_id + ':' + client_secret).toString('base64'))
-  },
-  form: {
-    grant_type: 'client_credentials'
-  },
-  json: true
-};
-
-// get Spotify Access Token
-request.post(authOptions, function(error, response, body) {
-  if (!error && response.statusCode === 200) {
-    var token = body.access_token;
-  }
-});
-//END of Spotify call
 
 var app = express();
 
