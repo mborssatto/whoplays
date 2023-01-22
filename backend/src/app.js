@@ -1,15 +1,63 @@
+require('dotenv');
+require('dotenv').config({ debug: process.env.DEBUG });
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-var cors = require('cors')
+var cors = require('cors');
+var request = require('request');
  
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var eventsRouter = require('./routes/events');
 
 require('./database-connection')
+
+var client_id = process.env.CLIENT_ID;
+var client_secret = process.env.CLIENT_SECRET;
+console.log("client_id")
+
+console.log(client_id)
+
+var authOptions = {
+  url: 'https://accounts.spotify.com/api/token',
+  headers: {
+    'Authorization': 'Basic ' + (Buffer.from(client_id + ':' + client_secret).toString('base64'))
+  },
+  form: {
+    grant_type: 'client_credentials'
+  },
+  json: true
+};
+
+console.log("*****************this is running*****************")
+console.log(process.env) 
+
+request.post(authOptions, function(error, response, body) {
+  if (!error && response.statusCode === 200) {
+    var token = body.access_token;
+    console.log("**********SUCCESS ACCESS TOKEN GRANTED*********");
+    console.log(body.access_token)
+  }
+    console.log("this is an error" + error)
+});
+
+request.post(authOptions, function (error, response, body) {  
+  if (!error && response.statusCode === 200) {
+
+    // use the access token to access the Spotify Web API
+    var token = body.access_token;
+    request.get(options, function (error, response, body) {
+      console.log(body);
+      console.log("**********SUCCESS ACCESS TOKEN GRANTED*********")
+    });
+  } if (error) {
+    return console.error("Error: " + error);
+  }
+});
+console.log("*****************this is ALSO running*****************")
+
 
 var app = express();
 
