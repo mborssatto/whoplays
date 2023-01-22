@@ -12,7 +12,7 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var eventsRouter = require('./routes/events');
 
-require('./database-connection')
+require('./database-connection');
 
 // Spotify API 
 var client_id = process.env.CLIENT_ID;
