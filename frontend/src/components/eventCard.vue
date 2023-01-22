@@ -1,23 +1,14 @@
-<template>
-<b-card
-    :title="event.name"
-    img-src="https://picsum.photos/600/300/?image=25"
-    img-alt="Image"
-    img-top
-    style="max-width: 20rem;"
-    class="mb-2"
-  >
-  <b-card-text>
-    <h5>{{ event.artist.join(", ") }}</h5>
-    <p>{{ new Intl.DateTimeFormat('de-DE').format(new Date(event.date)) }}</p>
-    <p>{{ event.city }}</p>
-    <p>{{ event.venue }}</p>
-  </b-card-text>
-
-  <b-button href="#" variant="primary">Favorite</b-button>
-</b-card>
+<template lang="pug">
+b-card.mb-2(:title='event.name' img-src='https://picsum.photos/600/300/?image=25' img-alt='Image' img-top=''
+style='max-width: 20rem;')
+  b-card-text
+    h5 {{ event.artist.join(", ") }}
+    p {{ new Intl.DateTimeFormat('de-DE').format(new Date(event.date)) }}
+    p {{ event.city }}
+    p {{ event.venue }}
+  b-button(href='#' variant='primary') Favorite
 </template>
- 
+
 <script>
 import axios from 'axios'
 

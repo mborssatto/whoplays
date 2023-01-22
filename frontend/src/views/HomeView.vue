@@ -1,16 +1,11 @@
-<template>
-  <div class="home">
-    <h1>Welcome to whoPlays</h1>
-    <h2>Check out these events!</h2>
-    <b-container>
-      <b-row align-v="stretch">
-        <b-col md="4" v-for="event in events" class="card-row">
-          <event-card
-           :event="event" :key="event._id" /></event-card>
-        </b-col>
-      </b-row>
-    </b-container>
-  </div>
+<template lang="pug">
+.home
+  h1 Welcome to whoPlays
+  h2 Check out these events!
+  b-container
+    b-row(align-v='stretch')
+      b-col.card-row(md='4' v-for='event in events')
+        event-card(:event='event' :key='event._id')
 </template>
 
 <script>
