@@ -58,16 +58,26 @@ router.get('/initialize', async (req, res) => {
 
 // get events by ID
 router.get('/:id', async (req, res) => {
-  const event = await Event.findById(req.params.id)
+  try {
+    const event = await Event.findById(req.params.id);
+    if (!event) {
+      return res.status(404).render('error', {
+        error: { status: 404 },
+        message: `No event with id ${req.params.id} found`,
+      });
+    }
+    return res.render('detail', { event });
+  } catch (err) {
+    if (err.name === "CastError") {
+      return res.status(400).render('error', {
+        error: { status: 400 },
+        message: `No event with id ${req.params.id} found`,
+      });
+    }
+    return next(err);
+  }
+});
 
-  if (!event)
-    return res.render('error', {
-      error: { status: 404 },
-      message: `No event with id ${req.params.id} found`,
-    })
-
-  return res.render('detail', { event })
-})
 
 
 // Add events endpoint
