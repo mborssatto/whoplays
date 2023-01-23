@@ -77,9 +77,11 @@ request.post(authOptions, function(error, response, body) {
       },
     };
     request.get(options, function(error, response, body) {
-      console.log("Response body searching for Taylor: 👩‍🎤 " + response.body);
-      // console.log("More details (needs refactor) 👩‍🎤 " + body.artists.items[0].id);
-      // artistID = (body.artists.items[0].id)
+      // console.log("More detailed artist info: 👩‍🎤 " + response.body);
+      let bodyParsed = JSON.parse(body);
+      console.log("Response body searching for Taylor: 👩‍🎤 ");
+      console.log("Artist name: " + bodyParsed.artists.items[0].name);
+      console.log("Artist ID: " + bodyParsed.artists.items[0].id);
     });
   }
 });
