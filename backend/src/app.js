@@ -1,3 +1,4 @@
+console.log("This is the start🏁")
 require('dotenv');
 require('dotenv').config({ debug: process.env.DEBUG });
 var createError = require('http-errors');
@@ -30,12 +31,46 @@ var authOptions = {
   json: true
 };
 
+var spotifyAccessToken
+
 request.post(authOptions, function(error, response, body) {
   if (!error && response.statusCode === 200) {
-    var token = body.access_token;
+    app.set('spotifyAccessToken', body.access_token);
+    console.log("***We have an Access Token 🥳" + body.access_token)
   }
 });
- 
+
+// async function getSpotifyAccessToken() {
+//   try {
+//     const response = await new Promise((resolve, reject) => {
+//       request.post(authOptions, function(error, response, body) {
+//         if (error) {
+//           reject(error);
+//         } else {
+//           resolve(response);
+//         }
+//       });
+//     });
+//     if (response.statusCode === 200) {
+//       const spotifyAccessToken = response.body.access_token;
+//       console.log("***We have an Access Token 🥳" + spotifyAccessToken);
+//     }
+//   } catch (error) {
+//     console.log(error);
+//   }
+// }
+
+// getSpotifyAccessToken()
+//   .then((spotifyAccessToken) => {
+//     console.log("***We have an Access Token 🥳" + spotifyAccessToken);
+//   })
+//   .catch((error) => {
+//     console.log(error);
+//   });
+
+console.log(spotifyAccessToken)
+console.log("This is running**************")
+
 //END of Spotify call
 
 var app = express();
@@ -43,6 +78,7 @@ var app = express();
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
+// app.set('spotifyAccessToken', body.access_token)
 
 app.use(logger('dev'));
 app.use(express.json());
@@ -71,5 +107,12 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
+console.log(spotifyAccessToken)
+// console.log("waiting for 1 second...");
+// setTimeout(() => {
+//   console.log(spotifyAccessToken);
+// }, 1000);
+// console.log("This is the end**************🏁")
 
 module.exports = app;
