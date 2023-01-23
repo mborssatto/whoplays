@@ -1,0 +1,12 @@
+extends layout
+
+block content
+
+  //- p #{result.map(r => r.name).join(", ")}
+
+  each item in result
+    h1 
+      a(href='/events/' + item.id) #{item.name} 
+    h2 #{item.artist.join(", ")}
+    p #{item.date}
+    p #{item.city}

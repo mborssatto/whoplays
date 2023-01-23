@@ -18,7 +18,7 @@ router.get('/', async (req, res) => {
     result = await Event.find({ city: req.query.city })
   } else result = await Event.find()
 
-  return res.send(result)
+  return res.render('events', {result})
 })
 
 //Initialize (refactor out)
@@ -57,8 +57,16 @@ router.get('/initialize', async (req, res) => {
 })
 
 // get events by ID
-router.get('/:id', async (req, res, next) => {
-  res.send(await Event.findById(req.params.id))
+router.get('/:id', async (req, res) => {
+  const event = await Event.findById(req.params.id)
+
+  if (!event)
+    return res.render('error', {
+      error: { status: 404 },
+      message: `No event with id ${req.params.id} found`,
+    })
+
+  return res.render('detail', { event })
 })
 
 
