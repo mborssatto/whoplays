@@ -36,6 +36,26 @@ request.post(authOptions, function (error, response, body) {
   }
 });
 
+
+// test: will log a user name
+request.post(authOptions, function(error, response, body) {
+  if (!error && response.statusCode === 200) {
+
+    // use the access token to access the Spotify Web API
+    var token = body.access_token;
+    var options = {
+      url: 'https://api.spotify.com/v1/users/jmperezperez',
+      headers: {
+        'Authorization': 'Bearer ' + token
+      },
+      json: true
+    };
+    request.get(options, function(error, response, body) {
+      console.log("We have a Spotify User name! 🐣 " + body.display_name);
+      console.log(token)
+    });
+  }
+});
 //END of Spotify call
 
 var app = express();
