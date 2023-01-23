@@ -9,10 +9,19 @@ router.get('/token', async (req, res, next) => {
   res.send(await req.app.get('spotifyAccessToken'))
 })
 
-router.get('/', async (req, res, next) => {
-  res.send(await Event.find())
+
+// filter by city or return all events.
+router.get('/', async (req, res) => {
+  let result
+
+  if (req.query.city) {
+    result = await Event.find({ city: req.query.city })
+  } else result = await Event.find()
+
+  return res.send(result)
 })
 
+//Initialize (refactor out)
 router.get('/initialize', async (req, res) => {
   const eventOne = await Event.create({
     name: 'Festival One',
