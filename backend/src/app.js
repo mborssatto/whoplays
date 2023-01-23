@@ -29,15 +29,19 @@ var authOptions = {
   json: true
 };
 
+// let globalToken 
+
 request.post(authOptions, function (error, response, body) {
   if (!error && response.statusCode === 200) {
     app.set('spotifyAccessToken', body.access_token);
     console.log("***We have an Access Token 🥳" + body.access_token)
+    // globalToken = body.access_token
   }
 });
 
+// console.log(globalToken + "🪙")
 
-// test: will log a user name
+// This request logs the user name, just to demonstrate connection with Spotify API works
 request.post(authOptions, function(error, response, body) {
   if (!error && response.statusCode === 200) {
 
@@ -56,6 +60,30 @@ request.post(authOptions, function(error, response, body) {
     });
   }
 });
+
+//ATTEMPT to use the search function - search by Taylor
+
+request.post(authOptions, function(error, response, body) {
+  if (!error && response.statusCode === 200) {
+    let artitsID
+    // use the access token to access the Spotify Web API
+    let token = body.access_token;
+    let options = {
+      method: 'GET',
+      url: 'https://api.spotify.com/v1/search?q=Taylor&type=artist&limit=1&offset=0',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + token,
+      },
+    };
+    request.get(options, function(error, response, body) {
+      console.log("Response body searching for Taylor: 👩‍🎤 " + response.body);
+      // console.log("More details (needs refactor) 👩‍🎤 " + body.artists.items[0].id);
+      // artistID = (body.artists.items[0].id)
+    });
+  }
+});
+
 //END of Spotify call
 
 var app = express();
