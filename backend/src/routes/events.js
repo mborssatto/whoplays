@@ -1,7 +1,13 @@
 const express = require('express')
+const app = require('../app')
 const Event = require('../models/event')
 
 const router = express.Router()
+
+// get Spotify access token
+router.get('/token', async (req, res, next) => {
+  res.send(await req.app.get('spotifyAccessToken'))
+})
 
 router.get('/', async (req, res, next) => {
   res.send(await Event.find())
