@@ -6,7 +6,7 @@ const eventSchema = new mongoose.Schema({
   venue: String,
   name: String,
   date: Date,
-  artist: [String],
+  artists: [String],
   city: String,
   favoritedBy: [],
 })
@@ -15,7 +15,7 @@ class Event {
   get detail() {
     return `
 Event: ${this.name}
-Artist:\n${this.artist
+Artists:\n${this.artists
       .map(element => {
         return `- ${element}`
       })

@@ -2,7 +2,7 @@
 b-card.mb-2(:title='event.name' img-src='https://picsum.photos/600/300/?image=25' img-alt='Image' img-top=''
 style='max-width: 20rem;')
   b-card-text
-    h5 {{ event.artist.join(", ") }}
+    h5 {{ event.artists.join(", ") }}
     p {{ new Intl.DateTimeFormat('de-DE').format(new Date(event.date)) }}
     p {{ event.city }}
     p {{ event.venue }}
