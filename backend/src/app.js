@@ -48,7 +48,7 @@ request.post(authOptions, function(error, response, body) {
     // use the access token to access the Spotify Web API
     var token = body.access_token;
     var options = {
-      url: 'https://api.spotify.com/v1/users/jmperezperez',
+      url: 'https://api.spotify.com/v1/users/1156137091?si=5fXOLdSESN-xyAZ7eedLng',
       headers: {
         'Authorization': 'Bearer ' + token
       },
@@ -60,32 +60,6 @@ request.post(authOptions, function(error, response, body) {
     });
   }
 });
-
-//ATTEMPT to use the search function - search by Taylor
-
-request.post(authOptions, function(error, response, body) {
-  if (!error && response.statusCode === 200) {
-    let artitsID
-    // use the access token to access the Spotify Web API
-    let token = body.access_token;
-    let options = {
-      method: 'GET',
-      url: 'https://api.spotify.com/v1/search?q=Taylor&type=artist&limit=1&offset=0',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': 'Bearer ' + token,
-      },
-    };
-    request.get(options, function(error, response, body) {
-      // console.log("More detailed artist info: 👩‍🎤 " + response.body);
-      let bodyParsed = JSON.parse(body);
-      console.log("Response body searching for Taylor: 👩‍🎤 ");
-      console.log("Artist name: " + bodyParsed.artists.items[0].name);
-      console.log("Artist ID: " + bodyParsed.artists.items[0].id);
-    });
-  }
-});
-
 //END of Spotify call
 
 var app = express();
