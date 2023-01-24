@@ -19,7 +19,7 @@ router.get('/', async (req, res) => {
     result = await Event.find({ city: req.query.city })
   } else result = await Event.find()
 
-  return res.render('events', {result})
+  return res.send(result)
 })
 
 // get events by ID
