@@ -3,6 +3,7 @@ const mongoose = require('mongoose')
 let connectionString = process.env.MONGODB_CONNECTION_STRING
 
 mongoose.set('debug', true)
+mongoose.set('strictQuery', false)
 
 mongoose
   .connect(connectionString, {
