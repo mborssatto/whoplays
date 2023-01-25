@@ -3,11 +3,20 @@ const autopopulate = require('mongoose-autopopulate')
 const User = require('../models/user')
 
 const eventSchema = new mongoose.Schema({
-  venue: String,
-  name: String,
-  date: Date,
+  name: {
+    type: String,
+    required: true
+  },
+  date: {
+    type: Date,
+    required: true
+  },
   artists: [String],
-  city: String,
+  city:  {
+    type: String,
+    required: true
+  },
+  venue: String,
   favoritedBy: [],
 })
 
