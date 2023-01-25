@@ -6,7 +6,7 @@ style='max-width: 20rem;')
     p {{ new Intl.DateTimeFormat('de-DE').format(new Date(event.date)) }}
     p {{ event.city }}
     p {{ event.venue }}
-  b-button(href='#' variant='primary') Favorite
+  b-button(v-if="event", :href="'/events/' + event._id", variant='primary') See details
 </template>
 
 <script>
