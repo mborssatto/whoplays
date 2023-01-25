@@ -23,7 +23,7 @@ router.get('/', async (req, res) => {
 })
 
 // get events by ID
-router.get('/:id', async (req, res) => {
+router.get('/:id', async (req, res, next) => {
   try {
     const event = await Event.findById(req.params.id);
     if (!event) {
@@ -32,14 +32,29 @@ router.get('/:id', async (req, res) => {
         message: `No event with id ${req.params.id} found`,
       });
     }
-    return res.render('detail', { event });
+        // use the access token to access the Spotify Web API
+    let token = req.app.get('spotifyAccessToken');
+    let options = {
+      method: 'GET',
+      url: `https://api.spotify.com/v1/search?q=${event.artists[0]}&type=artist&limit=1&offset=0`,
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + token,
+      },
+    };
+    return request.get(options, function (error, response, body) {
+      if (error) {
+        return res.send({event})
+      }
+      console.log("More detailed artist info: 👩‍🎤 " + response.body);
+      let bodyParsed = JSON.parse(body);
+      console.log(`Response body searching for ${event.artist}: 👩‍🎤 `);
+      console.log("Artist name: " + bodyParsed.artists.items[0].name);
+      console.log("Artist ID: " + bodyParsed.artists.items[0].id);
+      return res.send({ event, bodyParsed });
+    });
+
   } catch (err) {
-    if (err.name === "CastError") {
-      return res.status(400).render('error', {
-        error: { status: 400 },
-        message: `No event with id ${req.params.id} found`,
-      });
-    }
     return next(err);
   }
 });
