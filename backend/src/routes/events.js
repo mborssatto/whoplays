@@ -46,10 +46,9 @@ router.get('/:id', async (req, res, next) => {
       if (error) {
         return res.send({event})
       }
-      console.log("More detailed artist info: 👩‍🎤 " + response.body);
+      // console.log("More detailed artist info: 👩‍🎤 " + response.body);
       let bodyParsed = JSON.parse(body);
-      console.log(`Response body searching for ${event.artist}: 👩‍🎤 `);
-      console.log("Artist name: " + bodyParsed.artists.items[0].name);
+      console.log("Searching for Artist: 👩‍🎤 " + bodyParsed.artists.items[0].name);
       console.log("Artist ID: " + bodyParsed.artists.items[0].id);
       return res.send({ event, bodyParsed });
     });
