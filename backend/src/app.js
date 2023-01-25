@@ -18,6 +18,13 @@ require('./database-connection');
 var client_id = process.env.CLIENT_ID;
 var client_secret = process.env.CLIENT_SECRET;
 
+console.log("************")
+
+// if (!process.env.CLIENT_ID) { 
+//   console.log("⛔️ Warning: Please check you have a Client ID and Secret for Spotify stored in .env")
+// } else console.log(process.env.CLIENT_ID)
+
+
 var authOptions = {
   url: 'https://accounts.spotify.com/api/token',
   headers: {
@@ -29,17 +36,12 @@ var authOptions = {
   json: true
 };
 
-// let globalToken 
-
 request.post(authOptions, function (error, response, body) {
   if (!error && response.statusCode === 200) {
     app.set('spotifyAccessToken', body.access_token);
     console.log("***We have an Access Token 🥳" + body.access_token)
-    // globalToken = body.access_token
   }
 });
-
-// console.log(globalToken + "🪙")
 
 // This request logs the user name, just to demonstrate connection with Spotify API works
 request.post(authOptions, function(error, response, body) {
@@ -60,6 +62,8 @@ request.post(authOptions, function(error, response, body) {
     });
   }
 });
+
+
 //END of Spotify call
 
 var app = express();
