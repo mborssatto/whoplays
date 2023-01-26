@@ -6,6 +6,7 @@ b-card.mb-2(:title='event.event.name' style='max-width: 20rem;')
     p {{ event.event.city }}
     p {{ event.event.venue }}
     iframe(:src="'https://open.spotify.com/embed/artist/' + event.spotifyArtistInfo.artists.items[0].id + '?utm_source=generator&theme=2'")
+    //- iframe(v-for='artist in event.spotifyArtistInfo.artists.items', :key='artist.id', :src="'https://open.spotify.com/embed/artist/' + artist.id + '?utm_source=generator&theme=2'")
   b-button(v-if="event.event", href="", variant='primary') Create Playlist
 </template>
 
