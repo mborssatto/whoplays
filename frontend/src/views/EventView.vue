@@ -1,5 +1,5 @@
 <template lang="pug">
-div
+div.card-row
     event-player(:event='eventData' v-if='eventData')
 </template>
 
@@ -23,3 +23,11 @@ export default {
     }
 };
 </script>
+
+<style>
+.card-row {
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+}
+</style>
