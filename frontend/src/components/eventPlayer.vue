@@ -1,13 +1,12 @@
 <template lang="pug">
-b-card.mb-2(:title='event.event.name' style='max-width: 20rem;')
+b-card.mb-2(:title='eventData.event.name' style='max-width: 20rem;')
   b-card-text
-    h5 {{ event.event.artists.join(", ") }}
-    p {{ new Intl.DateTimeFormat('de-DE').format(new Date(event.event.date)) }}
-    p {{ event.event.city }}
-    p {{ event.event.venue }}
-    iframe(:src="'https://open.spotify.com/embed/artist/' + event.spotifyArtistInfo.artists.items[0].id + '?utm_source=generator&theme=2'")
-    //- iframe(v-for='artist in event.spotifyArtistInfo.artists.items', :key='artist.id', :src="'https://open.spotify.com/embed/artist/' + artist.id + '?utm_source=generator&theme=2'")
-  b-button(v-if="event.event", href="", variant='primary') Create Playlist
+    h5 {{ eventData.event.artists.join(", ") }}
+    p {{ new Intl.DateTimeFormat('de-DE').format(new Date(eventData.event.date)) }}
+    p {{ eventData.event.city }}
+    p {{ eventData.event.venue }}
+    iframe(v-for='id in eventData.artistIDs', :key='id', :src="'https://open.spotify.com/embed/artist/' + id + '?utm_source=generator&theme=2'")
+  b-button(v-if="eventData.event", href="", variant='primary') Create Playlist
 </template>
 
 <script>
@@ -15,7 +14,7 @@ import axios from 'axios'
 
 export default {
   name: 'EventPlayer',
-  props: ['event']
+  props: ['eventData']
 }
 </script>
 

@@ -10,7 +10,6 @@ router.get('/token', async (req, res, next) => {
 })
 
 
-
 // filter by city or return all events. WORKS with url (eg) http://localhost:3000/events?city=Berlin
 router.get('/', async (req, res) => {
   let result
@@ -26,33 +25,44 @@ router.get('/', async (req, res) => {
 router.get('/:id', async (req, res, next) => {
   try {
     const event = await Event.findById(req.params.id);
-    if (!event) {
-      return res.status(404).render('error', {
-        error: { status: 404 },
-        message: `No event with id ${req.params.id} found`,
-      });
-    }
-        // use the access token to access the Spotify Web API
-    let token = req.app.get('spotifyAccessToken');
-    let options = {
-      method: 'GET',
-      url: `https://api.spotify.com/v1/search?q=${event.artists[0]}&type=artist&limit=1&offset=0`,
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': 'Bearer ' + token,
-      },
-    };
-    return request.get(options, function (error, response, body) {
-      if (error) {
-        return res.send({event})
-      }
-      // console.log("More detailed artist info: 👩‍🎤 " + response.body);
-      let spotifyArtistInfo = JSON.parse(body);
-      console.log("Searching for Artist: 👩‍🎤 " + spotifyArtistInfo.artists.items[0].name);
-      console.log("Artist ID: " + spotifyArtistInfo.artists.items[0].id);
-      return res.send({ event, spotifyArtistInfo });
-    });
+    let artists = event.artists;
+    console.log("Searching for Artists: 👩‍🎤 " + artists);
 
+    // use the access token to access the Spotify Web API
+    async function fetchArtistID(artist) {
+      let token = req.app.get('spotifyAccessToken');
+      let options = {
+        method: 'GET',
+        url: `https://api.spotify.com/v1/search?q=${artist}&type=artist&limit=1&offset=0`,
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer ' + token,
+        },
+      };
+      return new Promise((resolve, reject) =>
+        request.get(options, function (error, response, body) {
+          if (error) {
+            return res.send({ error, event }) // sends event anyways even if there are errors with the request to Spotify
+            console.log("Error while retrieving Artist ID from Spotify")
+          }
+          resolve(JSON.parse(body));
+        }));
+    }
+    
+    // create an array of promises for each artist
+    let promises = artists.map(artist => fetchArtistID(artist));
+
+    // use Promise.all() to run the queries in parallel
+    let artistInfo = await Promise.all(promises);
+    let artistIDs = []
+      artistInfo.forEach(({ artists: { items: [{ id }] } }) => artistIDs.push(id));
+    let artistNames = []
+      artistInfo.forEach(({ artists: { items: [{ name }] } }) => artistNames.push(name));
+    console.log(artistNames)
+
+    // do something with the artist IDs
+    console.log("Artist IDs:", artistIDs);
+    return res.send({ event, artistIDs });
   } catch (err) {
     return next(err);
   }

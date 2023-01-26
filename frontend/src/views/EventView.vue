@@ -1,6 +1,6 @@
 <template lang="pug">
 div.card-row
-    event-player(:event='eventData' v-if='eventData')
+    event-player(:eventData='eventData' v-if='eventData')
 </template>
 
 <script>
@@ -22,6 +22,7 @@ export default {
         this.eventData = eventsRequest.data
     }
 };
+
 </script>
 
 <style>
