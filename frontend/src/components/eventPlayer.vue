@@ -1,12 +1,11 @@
 <template lang="pug">
-//- p {{ event.bodyParsed.artists.items[0].id }}
 b-card.mb-2(:title='event.event.name' style='max-width: 20rem;')
   b-card-text
     h5 {{ event.event.artists.join(", ") }}
     p {{ new Intl.DateTimeFormat('de-DE').format(new Date(event.event.date)) }}
     p {{ event.event.city }}
     p {{ event.event.venue }}
-    iframe(:src="'https://open.spotify.com/embed/artist/' + event.bodyParsed.artists.items[0].id + '?utm_source=generator&theme=2'")
+    iframe(:src="'https://open.spotify.com/embed/artist/' + event.spotifyArtistInfo.artists.items[0].id + '?utm_source=generator&theme=2'")
   b-button(v-if="event.event", href="", variant='primary') Create Playlist
 </template>
 
