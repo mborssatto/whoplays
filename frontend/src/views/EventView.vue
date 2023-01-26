@@ -1,7 +1,6 @@
 <template lang="pug">
 div
-    iframe(:src="'https://open.spotify.com/embed/artist/' + eventData.bodyParsed.artists.items[0].id + '?utm_source=generator&theme=2'")
-    event-player(:event='eventData.event' v-if='eventData.event')
+    event-player(:event='eventData' v-if='eventData')
 </template>
 
 <script>
