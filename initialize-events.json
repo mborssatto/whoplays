@@ -1,0 +1,303 @@
+[
+ {
+   "name": "Berlin Music Festival",
+   "date": "01/22/2023",
+   "venue": "Alexanderplatz",
+   "artist": "The 1975",
+   "city": "Berlin"
+ },
+ {
+   "name": "São Paulo Jazz Festival",
+   "date": "02/05/2023",
+   "venue": "SESC Pinheiros",
+   "artist": "Snarky Puppy",
+   "city": "São Paulo"
+ },
+ {
+   "name": "Berlin Electronic Music Festival",
+   "date": "03/10/2023",
+   "venue": "Columbiahalle",
+   "artist": "Moderat",
+   "city": "Berlin"
+ },
+ {
+   "name": "São Paulo Indie Music Festival",
+   "date": "04/15/2023",
+   "venue": "Citibank Hall",
+   "artist": "Tame Impala",
+   "city": "São Paulo"
+ },
+ {
+   "name": "Berlin Pop Music Festival",
+   "date": "05/20/2023",
+   "venue": "Zitadelle Spandau",
+   "artist": "Billie Eilish",
+   "city": "Berlin"
+ },
+ {
+   "name": "São Paulo Rock Festival",
+   "date": "06/25/2023",
+   "venue": "Espaço das Américas",
+   "artist": "Arctic Monkeys",
+   "city": "São Paulo"
+ },
+ {
+   "name": "Berlin Hip-Hop Festival",
+   "date": "07/30/2023",
+   "venue": "Huxleys Neue Welt",
+   "artist": "J. Cole",
+   "city": "Berlin"
+ },
+ {
+   "name": "São Paulo Reggae Festival",
+   "date": "08/15/2023",
+   "venue": "Audio Club",
+   "artist": "Damian Marley",
+   "city": "São Paulo"
+ },
+ {
+   "name": "Berlin Folk Music Festival",
+   "date": "09/20/2023",
+   "venue": "Heimathafen Neukölln",
+   "artist": "Bon Iver",
+   "city": "Berlin"
+ },
+ {
+   "name": "São Paulo Blues Festival",
+   "date": "10/25/2023",
+   "venue": "Cine Joia",
+   "artist": "Gary Clark Jr.",
+   "city": "São Paulo"
+ },
+ {
+   "name": "Berlin Country Music Festival",
+   "date": "11/30/2023",
+   "venue": "Columbia Theater",
+   "artist": "Kacey Musgraves",
+   "city": "Berlin"
+ },
+ {
+   "name": "São Paulo World Music Festival",
+   "date": "12/15/2023",
+   "venue": "SESC Pompeia",
+   "artist": "Youssou N'Dour",
+   "city": "São Paulo"
+ },
+ {
+   "name": "Berlin Classical Music Festival",
+   "date": "01/22/2024",
+   "venue": "Philharmonie",
+   "artist": "Berliner Philharmoniker",
+   "city": "Berlin"
+ },
+ {
+   "name": "São Paulo Opera Festival",
+   "date": "02/05/2024",
+   "venue": "Teatro Municipal",
+   "artist": "Plácido Domingo",
+   "city": "São Paulo"
+ },
+ {
+   "name": "Berlin Chamber Music Festival",
+   "date": "03/10/2024",
+   "venue": "Konzerthaus",
+   "artist": "Emerson String Quartet",
+   "city": "Berlin"
+ },
+ {
+   "name": "São Paulo Symphony Festival",
+   "date": "04/15/2024",
+   "venue": "Sala São Paulo",
+   "artist": "São Paulo Symphony Orchestra",
+   "city": "São Paulo"
+ },
+ {
+   "name": "Berlin Music and Arts Festival",
+   "date": "05/20/2024",
+   "venue": "Haus der Kulturen der Welt",
+   "artist": "N/A",
+   "city": "Berlin"
+ },
+ {
+   "name": "São Paulo Music and Dance Festival",
+   "date": "06/25/2024",
+   "venue": "Teatro Oficina",
+   "artist": "N/A",
+   "city": "São Paulo"
+ },
+ {
+   "name": "Berlin Music and Film Festival",
+   "date": "07/30/2024",
+   "venue": "Friedrichstadt-Palast",
+   "artist": "N/A",
+   "city": "Berlin"
+ },
+ {
+   "name": "São Paulo Music and Theater Festival",
+   "date": "08/15/2024",
+   "venue": "Teatro Alfa",
+   "artist": "N/A",
+   "city": "São Paulo"
+ },
+ {
+   "name": "Berlin Music and Literature Festival",
+   "date": "09/20/2024",
+   "venue": "Akademie der Künste",
+   "artist": "N/A",
+   "city": "Berlin"
+ },
+ {
+   "name": "São Paulo Music and Food Festival",
+   "date": "10/25/2024",
+   "venue": "Praça das Artes",
+   "artist": "N/A",
+   "city": "São Paulo"
+ },
+ {
+   "name": "Berlin Music and Photography Festival",
+   "date": "11/30/2024",
+   "venue": "C/O Berlin",
+   "artist": "N/A",
+   "city": "Berlin"
+ },
+ {
+   "name": "São Paulo Music and Sports Festival",
+   "date": "12/15/2024",
+   "venue": "Allianz Parque",
+   "artist": "N/A",
+   "city": "São Paulo"
+ },
+ {
+   "name": "Berlin Music and Technology Festival",
+   "date": "01/22/2025",
+   "venue": "Berlin Congress Center",
+   "artist": "N/A",
+   "city": " Berlin"
+ },
+  {
+   "name": "Berlin Music Festival",
+   "date": "01/22/2023",
+   "venue": "Alexanderplatz",
+   "artists": "The 1975, Foals, Arctic Monkeys",
+   "city": "Berlin"
+ },
+ {
+   "name": "São Paulo Jazz Festival",
+   "date": "02/05/2023",
+   "venue": "SESC Pinheiros",
+   "artists": "Snarky Puppy, John McLaughlin, Chick Corea",
+   "city": "São Paulo"
+ },
+ {
+   "name": "Berlin Electronic Music Festival",
+   "date": "03/10/2023",
+   "venue": "Columbiahalle",
+   "artists": "Moderat, Jamie xx, Jon Hopkins",
+   "city": "Berlin"
+ },
+ {
+   "name": "São Paulo Indie Music Festival",
+   "date": "04/15/2023",
+   "venue": "Citibank Hall",
+   "artists": "Tame Impala, Mac DeMarco, King Gizzard & The Lizard Wizard",
+   "city": "São Paulo"
+ },
+ {
+   "name": "Berlin Pop Music Festival",
+   "date": "05/20/2023",
+   "venue": "Zitadelle Spandau",
+   "artists": "Billie Eilish, Lorde, Dua Lipa",
+   "city": "Berlin"
+ },
+ {
+   "name": "São Paulo Rock Festival",
+   "date": "06/25/2023",
+   "venue": "Espaço das Américas",
+   "artists": "Arctic Monkeys, The Black Keys, Queens of the Stone Age",
+   "city": "São Paulo"
+ },
+ {
+   "name": "Berlin Hip-Hop Festival",
+   "date": "07/30/2023",
+   "venue": "Huxleys Neue Welt",
+   "artists": "J. Cole, Kendrick Lamar",
+   "city": "Berlin"
+ },
+ {
+   "name": "São Paulo Reggae Festival",
+   "date": "08/15/2023",
+   "venue": "Audio Club",
+   "artists": "Damian Marley, Bob Marley & The Wailers, Toots & The Maytals",
+   "city": "São Paulo"
+ },
+ {
+   "name": "Berlin Folk Music Festival",
+   "date": "09/20/2023",
+   "venue": "Heimathafen Neukölln",
+   "artists": "Bon Iver, Fleet Foxes, Iron & Wine",
+   "city": "Berlin"
+ },
+ {
+   "name": "São Paulo Blues Festival",
+   "date": "10/25/2023",
+   "venue": "Cine Joia",
+   "artists": "Gary Clark Jr., B.B. King, Muddy Waters",
+   "city": "São Paulo"
+ },
+ {
+   "name": "Berlin Country Music Festival",
+   "date": "11/30/2023",
+   "venue": "Columbia Theater",
+   "artists": "Kacey Musgraves, Miranda Lambert, Ashley McBryde",
+   "city": "Berlin"
+ },
+ {
+   "name": "São Paulo World Music Festival",
+   "date": "12/15/2023",
+   "venue": "SESC Pompeia",
+   "artists": "Youssou N'Dour, Angelique Kidjo, Tinariwen",
+   "city": "São Paulo"
+ },
+ {
+   "name": "Berlin Classical Music Festival",
+   "date": "01/22/2024",
+   "venue": "Philharmonie",
+   "artists": "Berliner Philharmoniker, Vienna Philharmonic Orchestra, London Symphony Orchestra",
+   "city": "Berlin"
+ },
+ {
+   "name": "São Paulo Opera Festival",
+   "date": "02/05/2024",
+   "venue": "Teatro Municipal",
+   "artists": "Plácido Domingo, Luciano Pavarotti, Jose Carreras",
+   "city": "São Paulo"
+ },
+ {
+   "name": "Berlin Chamber Music Festival",
+   "date": "03/10/2024",
+   "venue": "Konzerthaus",
+   "artists": "Emerson String Quartet, Takács Quartet, Juilliard Quartet",
+   "city": "Berlin"
+ },
+ {
+   "name": "São Paulo Symphony Festival",
+   "date": "04/15/2024",
+   "venue": "Sala São Paulo",
+   "artists": "São Paulo Symphony Orchestra, Orquestra Filarmônica de São Paulo, Orquestra de Câmara de São Paulo",
+   "city": "São Paulo"
+ },
+ {
+   "name": "Berlin Music and Arts Festival",
+   "date": "05/20/2024",
+   "venue": "Haus der Kulturen der Welt",
+   "artists": "N/A",
+   "city": "Berlin"
+ },
+ {
+   "name": "São Paulo Music and Dance Festival",
+   "date": "06/25/2024",
+   "venue": "Teatro Oficina",
+   "artists": "N/A",
+   "city": "São Paulo"
+ }
+]
