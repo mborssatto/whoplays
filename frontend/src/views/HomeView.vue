@@ -2,14 +2,15 @@
 .home
   h1 Welcome to whoPlays
   h2 Find events in your city and get to know the lineup.
+  div.filters
+    b-container
+      b-form-select(v-model="selectedCity" @change="filterEvents")
+        option(value="") Select your city
+        option(v-for="city in allCities" :value="city") {{ city }}
+      //- b-form-datepicker(v-model="selectedDate"  style='margin: auto')
   b-container
-    b-form-select(v-model="selectedCity" @change="filterEvents")
-      option(value="") Select your city
-      option(v-for="city in allCities" :value="city") {{ city }}
-    //- b-form-datepicker(v-model="selectedDate"  style='margin: auto')
-  b-container
-    b-row(align-v='stretch')
-      b-col.card-row(md='4' v-for='event in events')
+    b-row
+      b-col.card-row(md='6' v-for='event in events')
         event-card(:event='event' :key='event._id')
 </template>
 
@@ -47,8 +48,16 @@ export default {
 
 <style>
 .card-row {
-  display: flex;
+  /* display: flex;
   align-items: stretch;
+  justify-content: center; */
+  min-width: 300px;
+}
+
+.filters {
+  display: flex;
+  align-items: center;
   justify-content: center;
+  min-height: 100px;
 }
 </style>
