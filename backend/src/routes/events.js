@@ -53,10 +53,11 @@ router.get('/:id', async (req, res, next) => {
 
     // use Promise.all() to run the queries in parallel
     let artistInfo = await Promise.all(promises);
+    // console.log("Artist Info:ℹ️ " + {artistInfo})
     let artistIDs = []
       artistInfo.forEach(({ artists: { items: [{ id }] } }) => artistIDs.push(id));
-    console.log("Artist IDs:", artistIDs);    
-    console.log("🎃🎃🎃🎃")
+    // console.log("Artist IDs:", artistIDs);    
+    // console.log("🎃🎃🎃🎃")
     return res.send({ event, artistIDs });
   } catch (err) {
     return next(err);
