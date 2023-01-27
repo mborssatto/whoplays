@@ -25,15 +25,14 @@ router.get('/', async (req, res) => {
 router.get('/:id', async (req, res, next) => {
   try {
     const event = await Event.findById(req.params.id);
-    let artists = event.artists;
-    console.log("Searching for Artists: 👩‍🎤 " + artists);
+    console.log("Searching for Artists: 👩‍🎤 " + event.artists);
 
     // use the access token to access the Spotify Web API
-    async function fetchArtistID(artist) {
+    async function fetchArtistID(artistName) {
       let token = req.app.get('spotifyAccessToken');
       let options = {
         method: 'GET',
-        url: `https://api.spotify.com/v1/search?q=${artist}&type=artist&limit=1&offset=0`,
+        url: `https://api.spotify.com/v1/search?q=${artistName}&type=artist&limit=1&offset=0`,
         headers: {
           'Content-Type': 'application/json',
           'Authorization': 'Bearer ' + token,
@@ -50,18 +49,14 @@ router.get('/:id', async (req, res, next) => {
     }
     
     // create an array of promises for each artist
-    let promises = artists.map(artist => fetchArtistID(artist));
+    let promises = event.artists.map(artist => fetchArtistID(artist));
 
     // use Promise.all() to run the queries in parallel
     let artistInfo = await Promise.all(promises);
     let artistIDs = []
       artistInfo.forEach(({ artists: { items: [{ id }] } }) => artistIDs.push(id));
-    let artistNames = []
-      artistInfo.forEach(({ artists: { items: [{ name }] } }) => artistNames.push(name));
-    console.log(artistNames)
-
-    // do something with the artist IDs
-    console.log("Artist IDs:", artistIDs);
+    console.log("Artist IDs:", artistIDs);    
+    console.log("🎃🎃🎃🎃")
     return res.send({ event, artistIDs });
   } catch (err) {
     return next(err);
