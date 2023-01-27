@@ -1,12 +1,13 @@
 <template lang="pug">
-b-card.mb-2(:title='event.name' img-src='https://picsum.photos/600/300/?image=25' img-alt='Image' img-top=''
+b-card.mb-3(:title='event.name' img-src='https://picsum.photos/600/300/?image=25' img-alt='Image' img-top=''
 style='max-width: 20rem;')
   b-card-text
     h5 {{ event.artists.join(", ") }}
     p {{ new Intl.DateTimeFormat('de-DE').format(new Date(event.date)) }}
     p {{ event.city }}
     p {{ event.venue }}
-  b-button(v-if="event", :href="'/events/' + event._id", variant='primary') See details
+    iframe(v-if="detailsExpanded && eventData" v-for='id in eventData?.artistIDs', :src="'https://open.spotify.com/embed/artist/' + id + '?utm_source=generator&theme=2'")
+  b-button(v-if="event", @click="toggleDetails", variant='primary') See details 
 </template>
 
 <script>
@@ -14,7 +15,23 @@ import axios from 'axios'
 
 export default {
   name: 'EventCard',
-  props: ['event']
+  props: ['event'],
+
+  data() {
+    return {
+      'detailsExpanded': false,
+      eventData: undefined
+    }
+  },
+
+  methods: {
+    async toggleDetails() {
+      this.detailsExpanded = !this.detailsExpanded;
+      if (!this.detailsExpanded) return
+      const eventsRequest = await axios.get(`/events/${this.event._id}`)
+      this.eventData = eventsRequest.data
+    }
+  }
 }
 </script>
 
