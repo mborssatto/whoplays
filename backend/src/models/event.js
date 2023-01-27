@@ -20,21 +20,6 @@ const eventSchema = new mongoose.Schema({
   favoritedBy: [],
 })
 
-class Event {
-  get detail() {
-    return `
-Event: ${this.name}
-Artists:\n${this.artists
-      .map(element => {
-        return `- ${element}`
-      })
-      .join('\n')}
-${this.date}
-City: ${this.city}
-Favorited by: ${this.favoritedBy}
-        `
-  }
-}
 
 eventSchema.loadClass(Event) 
 eventSchema.plugin(autopopulate) 
