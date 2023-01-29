@@ -14,7 +14,7 @@ import axios from 'axios'
 
 export default {
   name: 'EventPlayer',
-  props: ['eventData']
+  props: ['eventData'],
 }
 </script>
 
@@ -27,6 +27,6 @@ export default {
 }
 
 .btn {
-  align-self: center
+  align-self: center;
 }
 </style>

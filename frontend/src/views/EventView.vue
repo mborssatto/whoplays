@@ -5,30 +5,29 @@ div.card-row
 
 <script>
 import axios from 'axios'
-import EventPlayer from "@/components/eventPlayer.vue";
+import EventPlayer from '@/components/eventPlayer.vue'
 
 export default {
-    name: "EventView",
-    components: {
-        'event-player': EventPlayer,
-    },
-    data() {
-        return {
-            eventData: {}
-        }
-    },
-    async created() {
-        const eventsRequest = await axios.get(`/events/${this.$route.params.id}`)
-        this.eventData = eventsRequest.data
+  name: 'EventView',
+  components: {
+    'event-player': EventPlayer,
+  },
+  data() {
+    return {
+      eventData: {},
     }
-};
-
+  },
+  async created() {
+    const eventsRequest = await axios.get(`/events/${this.$route.params.id}`)
+    this.eventData = eventsRequest.data
+  },
+}
 </script>
 
 <style>
 .card-row {
-    display: flex;
-    align-items: stretch;
-    justify-content: center;
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
 }
 </style>

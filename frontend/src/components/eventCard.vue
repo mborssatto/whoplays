@@ -19,19 +19,19 @@ export default {
 
   data() {
     return {
-      'detailsExpanded': false,
-      eventData: undefined
+      detailsExpanded: false,
+      eventData: undefined,
     }
   },
 
   methods: {
     async toggleDetails() {
-      this.detailsExpanded = !this.detailsExpanded;
+      this.detailsExpanded = !this.detailsExpanded
       if (!this.detailsExpanded) return
       const eventsRequest = await axios.get(`/events/${this.event._id}`)
       this.eventData = eventsRequest.data
-    }
-  }
+    },
+  },
 }
 </script>
 
@@ -44,6 +44,6 @@ export default {
 }
 
 .btn {
-  align-self: center
+  align-self: center;
 }
 </style>
