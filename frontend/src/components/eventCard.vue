@@ -1,5 +1,5 @@
 <template lang="pug">
-b-card.mb-3(img-src='https://picsum.photos/600/300/' img-alt='Image' img-top='')
+b-card.mb-3(img-src='https://picsum.photos/600/50/' img-alt='Image' img-top='')
   b-card-title {{ event.name }}
   b-card-text
     h5 {{ event.artists.join(", ") }}
@@ -38,9 +38,9 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
 .card-body {
-  justify-content: space-between;
-  display: flex;
-  flex-direction: column;
+  // justify-content: space-between;
+  // display: flex;
+  // flex-direction: column;
 }
 
 .btn {
