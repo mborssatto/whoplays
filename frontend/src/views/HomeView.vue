@@ -4,7 +4,7 @@
   h2 Find events in your city and get to know the lineup.
   div.filters
     b-container
-      b-form-select(v-model="selectedCity" @change="filterEvents")
+      b-form-select.select-box(v-model="selectedCity" @change="filterEvents")
         option(value="") Select your city
         option(v-for="city in allCities" :value="city") {{ city }}
       //- b-form-datepicker(v-model="selectedDate"  style='margin: auto')
@@ -59,5 +59,15 @@ export default {
   align-items: center;
   justify-content: center;
   min-height: 100px;
+}
+
+.select-box {
+  border-color: var(--bs-border-color-translucent);
+  border-width: 1px;
+  border-color: var(--bs-border-color-translucent);
+  border-radius: 0.375rem;
+  height: 2.5rem;
+  width: min-content;
+  padding: inherit;
 }
 </style>
