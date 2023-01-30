@@ -2,10 +2,10 @@
 b-card.mb-3(img-src='https://picsum.photos/600/50/' img-alt='Image' img-top='')
   b-card-title {{ event.name }}
   b-card-text
-    h5 {{ event.artists.join(", ") }}
-    p {{ new Intl.DateTimeFormat('de-DE').format(new Date(event.date)) }}
-    p {{ event.city }}
-    p {{ event.venue }}
+    h4 {{ event.artists.join(", ") }}
+    p.date {{ new Intl.DateTimeFormat('de-DE').format(new Date(event.date)) }}
+    p.place {{ event.city }}
+    p.place {{ event.venue }}
     iframe(v-if="detailsExpanded && eventData" v-for='id in eventData?.artistIDs', :src="'https://open.spotify.com/embed/artist/' + id + '?utm_source=generator&theme=0'" style="border-radius:12px" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy")
   b-button(v-if="event", @click="toggleDetails", variant='primary') See details 
 </template>
@@ -38,13 +38,36 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
 .card-body {
+  text-align: left;
+  // line-height: 0.8rem;
   // justify-content: space-between;
   // display: flex;
   // flex-direction: column;
 }
 
-.btn {
-  align-self: center;
+.card-title {
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  font-weight: bold;
+  color: grey;
+  line-height: 0.6rem;
 }
 
+.date{
+  margin-bottom: 1.5rem;
+  margin-top: -0.3rem;
+  font-size: 0.9rem;
+  font-weight: bold;
+}
+.place {
+  font-size: 0.9rem;
+  line-height: 0.4rem;
+}
+
+.btn {
+  align-self: center;
+  
+  // --bs-btn-bg: $blue: #213950 !default;;
+  // --bs-btn-border: 0rem;
+}
 </style>
