@@ -1,7 +1,8 @@
 <template lang="pug">
 .home
-  h1 Welcome to whoPlays
-  h2 Find events in your city and get to know the lineup.
+  div.title
+    h1 Welcome to whoPlays
+    h2 Find events in your city and get to know the lineup.
   div.filters
     b-container
       b-form-select.select-box(v-model="selectedCity" @change="filterEvents")
@@ -47,6 +48,10 @@ export default {
 </script>
 
 <style>
+.title {
+  padding-top: 10rem;
+}
+
 .card-row {
   /* display: flex;
   align-items: stretch;
@@ -58,7 +63,7 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 100px;
+  min-height: 10rem;
 }
 
 .select-box {
