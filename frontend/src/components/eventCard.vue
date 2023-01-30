@@ -6,7 +6,7 @@ b-card.mb-3(img-src='https://picsum.photos/600/50/' img-alt='Image' img-top='')
     p {{ new Intl.DateTimeFormat('de-DE').format(new Date(event.date)) }}
     p {{ event.city }}
     p {{ event.venue }}
-    iframe.iframe(v-if="detailsExpanded && eventData" v-for='id in eventData?.artistIDs', :src="'https://open.spotify.com/embed/artist/' + id + '?utm_source=generator&theme=0'")
+    iframe(v-if="detailsExpanded && eventData" v-for='id in eventData?.artistIDs', :src="'https://open.spotify.com/embed/artist/' + id + '?utm_source=generator&theme=0'" style="border-radius:12px" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy")
   b-button(v-if="event", @click="toggleDetails", variant='primary') See details 
 </template>
 
@@ -45,10 +45,6 @@ export default {
 
 .btn {
   align-self: center;
-}
-
-.iframe{
-  margin: 0.5rem;
 }
 
 </style>
