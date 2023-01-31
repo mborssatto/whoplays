@@ -1,6 +1,5 @@
 const mongoose = require("mongoose");
 const autopopulate = require("mongoose-autopopulate");
-const User = require("../models/user");
 
 const eventSchema = new mongoose.Schema({
   name: {
