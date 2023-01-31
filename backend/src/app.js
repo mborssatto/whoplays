@@ -18,6 +18,7 @@ require("./database-connection");
 var client_id = process.env.CLIENT_ID;
 var client_secret = process.env.CLIENT_SECRET;
 
+console.log("This is our connection string: " + process.env.MONGODB_CONNECTION_STRING)
 console.log("************");
 
 // if (!process.env.CLIENT_ID) {
@@ -40,7 +41,7 @@ var authOptions = {
 request.post(authOptions, function (error, response, body) {
   if (!error && response.statusCode === 200) {
     app.set("spotifyAccessToken", body.access_token);
-    console.log("***We have an Access Token 🥳" + body.access_token);
+    console.log("****** We have an Access Token 🥳" + body.access_token);
   }
 });
 
